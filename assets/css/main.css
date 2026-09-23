@@ -4,7 +4,7 @@
   --nav-font: "Poppins", sans-serif;
   --background-color: #ffffff;
   --default-color: #444444;
-  --heading-color: #293076;
+  --heading-color: #000000;
   --accent-color: #E57A2A;
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
@@ -114,7 +114,7 @@ section,
 }
 
 .header .logo .logo-img {
-  height: 42px;
+  height: 65px;
   width: auto;
   margin-right: 10px;
   display: block
@@ -122,7 +122,7 @@ section,
 
 @media (max-width:575px) {
   .header .logo .logo-img {
-    height: 34px;
+    height: 50px;
     margin-right: 8px
   }
 
@@ -866,13 +866,13 @@ section,
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 3px;
-  color: #293076;
+  color: #000000;
   opacity: 0;
   animation: pl-fade .6s ease-out .9s forwards
 }
 
 .pl-name span {
-  color: #e57a2a
+  color: #000000
 }
 
 @keyframes pl-rise {
