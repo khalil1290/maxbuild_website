@@ -103,14 +103,28 @@ section,
 .header .logo h1 {
   font-size: 26px;
   margin: 0;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: .5px;
   color: var(--heading-color);
-  font-family: var(--heading-font)
+  font-family: var(--heading-font);
+  text-transform: uppercase
 }
 
 .header .logo h1 span {
   color: var(--accent-color)
+}
+
+.header .logo .logo-text {
+  line-height: 1.2
+}
+
+.header .logo .logo-tagline {
+  margin: 2px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .3px;
+  color: var(--default-color);
+  opacity: .75
 }
 
 .header .logo .logo-img {
@@ -129,6 +143,10 @@ section,
   .header .logo h1 {
     font-size: 20px
   }
+
+  .header .logo .logo-tagline {
+  font-size: 10px
+}
 }
 
 .container-fluid {
