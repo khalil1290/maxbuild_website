@@ -377,40 +377,306 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 20%)
 }
 
-/* About */
-.about .who-we-are {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+
+/* ==========================================================
+   About · Business areas · Mission & Vision · Principles
+   ========================================================== */
+:root {
+  --brand-navy: #293076;
+  --brand-peach: #f8d5b5;
+  --rule: #cfcfcf;
+}
+
+section.about,
+section.direction,
+section.principles {
+  padding: clamp(48px, 6vw, 72px) 0
+}
+
+/* Shared editorial pieces */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  font-family: var(--heading-font);
   font-size: 13px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%)
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--brand-navy)
 }
 
-.about .content h3 {
-  font-size: 2rem;
-  font-weight: 700
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 32px;
+  height: 3px;
+  background: var(--accent-color)
 }
 
-.about .content ul {
-  list-style: none;
-  padding: 0
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.12
 }
 
-.about .content ul li {
-  padding-bottom: 10px
+.section-lede {
+  margin: 20px 0 0;
+  max-width: 56ch;
+  font-size: 1.0625rem;
+  line-height: 1.7
 }
 
-.about .content ul i {
-  font-size: 1.25rem;
-  margin-right: 6px;
-  color: var(--accent-color)
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 104px);
+  align-items: start
 }
 
-.about .about-images img {
-  border-radius: 10px;
+.about-intro h2 {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -.01em
+}
+
+.about-standfirst {
+  margin: 32px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: #666
+}
+
+.about-story p {
+  margin: 0 0 1.5em;
+  max-width: 64ch;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--default-color)
+}
+
+.about-story p:last-child {
+  margin-bottom: 0
+}
+
+/* .about-story .about-lead {
+  margin-bottom: 1.75rem;
+  font-family: var(--heading-font);
+  font-size: clamp(1.25rem, 1.05rem + .8vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: #111
+} */
+
+.about-images {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: clamp(320px, 42vw, 520px);
+  margin-top: clamp(56px, 8vw, 96px)
+}
+
+.about-images img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover
+  min-height: 0;
+  object-fit: cover;
+  border-radius: 4px
+}
+
+.about-images .about-img-main {
+  grid-row: 1 / span 2
+}
+
+/* Mission & Vision */
+section.direction {
+  background: var(--brand-navy);
+  color: #fff;
+  --heading-color: #fff;
+  --default-color: #fff
+}
+
+.direction .eyebrow {
+  color: var(--brand-peach)
+}
+
+.direction .section-head h2 {
+  color: #fff;
+  font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
+  letter-spacing: .02em;
+  text-transform: uppercase
+}
+
+.direction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(24px, 3vw, 40px);
+  border-top: 1px solid rgba(255, 255, 255, .28)
+}
+
+.direction-item {
+  padding-top: clamp(24px, 3vw, 40px)
+}
+
+.direction-item:first-child {
+  padding-right: clamp(32px, 5vw, 80px);
+  border-right: 1px solid rgba(255, 255, 255, .28)
+}
+
+.direction-item:last-child {
+  padding-left: clamp(32px, 5vw, 80px)
+}
+
+.direction-num {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--heading-font);
+  font-size: clamp(5rem, 9vw, 9rem);
+  font-weight: 800;
+  line-height: .85;
+  letter-spacing: -.03em;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+  color: rgba(255, 255, 255, .14)
+}
+
+.direction-item h3 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 24px;
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #fff
+}
+
+.direction-item h3::before {
+  content: "";
+  flex: none;
+  width: 32px;
+  height: 3px;
+  background: var(--accent-color)
+}
+
+.direction-item p {
+  margin: 0;
+  max-width: 30em;
+  font-family: var(--heading-font);
+  font-size: clamp(1rem, .95rem + .25vw, 1.1875rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: #fff
+}
+
+/* Principles */
+.principles-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 104px);
+  align-items: start
+}
+
+.principles .section-head h2 {
+  letter-spacing: .02em;
+  text-transform: uppercase
+}
+
+.principles-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule)
+}
+
+.principles-list li {
+  position: relative;
+  padding: 20px 0 20px 32px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--heading-font);
+  font-size: clamp(1rem, .94rem + .25vw, 1.125rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #111
+}
+
+.principles-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(20px + .7em - 1.5px);
+  width: 16px;
+  height: 3px;
+  background: var(--accent-color)
+}
+
+@media (min-width: 992px) {
+  .about-intro {
+    position: sticky;
+    top: 120px
+  }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+
+  .about-grid,
+  .principles-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px
+  }
+}
+
+@media (max-width: 899px) {
+  .direction-grid {
+    grid-template-columns: minmax(0, 1fr)
+  }
+
+  .direction-item:first-child {
+    padding-right: 0;
+    padding-bottom: 48px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .28)
+  }
+
+  .direction-item:last-child {
+    padding-left: 0
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .about-images {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    height: auto;
+    gap: 12px
+  }
+
+  .about-images img {
+    height: auto;
+    aspect-ratio: 1 / 1
+  }
+
+  .about-images .about-img-main {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10
+  }
+
+  .principles-list li {
+    padding-left: 28px
+  }
 }
 
 .read-more {
