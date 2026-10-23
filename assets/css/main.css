@@ -1032,7 +1032,7 @@ section.direction {
    Until the image exists, the footer shows a plain dark navy gradient.
    ========================================================== */
 .footer {
-  --footer-image: url("../img/pexels-mehmet-kahraman-2160664567-37458987.jpg");
+  --footer-image: url("../img/footer/footer-bg.jpg");
   --footer-overlay: 0.82;
   --footer-text: #ffffff;
   --footer-muted: rgba(255, 255, 255, .78);
@@ -1127,16 +1127,6 @@ section.direction {
   background: var(--accent-color);
   border-color: var(--accent-color);
   color: #fff
-}
-
-.footer .footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0
-}
-
-.footer .footer-links li {
-  margin-bottom: 8px
 }
 
 .footer .footer-bottom {

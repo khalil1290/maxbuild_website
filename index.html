@@ -751,26 +751,37 @@
               </div>
             </div>
             <div class="info-item d-flex">
+              <i class="bi bi-envelope"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p><a href="mailto:info@maxbuildltd.com.ng">info@maxbuildltd.com.ng</a></p>
+              </div>
+            </div>
+            <div class="info-item d-flex">
               <i class="bi bi-globe"></i>
               <div>
                 <h3>Website</h3>
-                <p>www.maxbuildltd.com</p>
+                <p>www.maxbuild.com.ng</p>
               </div>
             </div>
           </div>
 
           <div class="col-lg-8">
-            <form id="contactForm"
-              onsubmit="event.preventDefault(); this.querySelector('.sent-message').style.display='block'; this.reset();">
+            <!-- Set the action to your Formspree endpoint (see README note in chat): https://formspree.io/f/YOUR_FORM_ID -->
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
               <div class="row gy-4">
                 <div class="col-md-6"><input type="text" name="name" placeholder="Your Name" required></div>
                 <div class="col-md-6"><input type="email" name="email" placeholder="Your Email" required></div>
                 <div class="col-lg-12"><input type="text" name="subject" placeholder="Subject" required></div>
                 <div class="col-lg-12"><textarea name="message" rows="6" placeholder="Message" required></textarea>
                 </div>
+                <!-- Spam trap: real visitors never see or fill this -->
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+                  style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
                 <div class="col-lg-12 text-center">
-                  <div class="sent-message" style="display:none;color:#059652;font-weight:600;margin-bottom:12px">Your
-                    message has been sent. Thank you!</div>
+                  <div class="sent-message" role="status" style="display:none;color:#059652;font-weight:600;margin-bottom:12px">
+                    Your message has been sent. Thank you, we will be in touch shortly.</div>
+                  <div class="error-message" role="alert" style="display:none;color:#d93025;font-weight:600;margin-bottom:12px"></div>
                   <button type="submit">Send Message</button>
                 </div>
               </div>
@@ -811,29 +822,19 @@
           <p>Durumi · Guzape · Life-Camp · Gwarimpa</p>
         </div>
 
-        <!-- Phone -->
+        <!-- Email -->
         <div class="col-lg-3 col-md-6">
+          <h4>Email</h4>
+          <p><a href="mailto:info@maxbuildltd.com.ng">info@maxbuildltd.com.ng</a></p>
+        </div>
+
+        <!-- Phone -->
+        <div class="col-lg-2 col-md-6">
           <h4>Phone</h4>
           <p><a href="tel:+2348034359404">08034359404</a></p>
           <p><a href="tel:+2348032269713">08032269713</a></p>
           <p><a href="tel:+2348071777613">08071777613</a></p>
-          <p><a href="https://www.maxbuildltd.com">www.maxbuildltd.com</a></p>
         </div>
-
-        <!-- Quick links -->
-        <div class="col-lg-2 col-md-6">
-          <h4>Explore</h4>
-          <ul class="footer-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#real-estate">Real Estate</a></li>
-            <li><a href="#construction">Construction</a></li>
-            <li><a href="#investment">Investment</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- To add an Email column like the reference design, get the client's real address,
-             then add: <h4>Email</h4><p><a href="mailto:ADDRESS">ADDRESS</a></p> -->
 
       </div>
     </div>
