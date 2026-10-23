@@ -1,0 +1,2400 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+assets/
+  css/
+    main.css
+  img/
+    hero-carousel/
+      in jahi.jpeg
+      jahi.jpg
+      mall jahi.jpeg
+      pexels-omergulen-19366884.jpg
+    logo/
+      MAX BUILD logo updated.png
+    team/
+      architect.png
+      BUILDER.png
+      BUILDERR.png
+      ceo.png
+      CHIEF MASON.png
+      CLO CHIFE LOGISTIC.png
+      coo.png
+      HEAD LABORER.png
+      RESIDENT ENGINEER.png
+      secretary.png
+      SECURITY.png
+      site architect.png
+      STORE KEEPER.png
+    gwarimpa 2.jpg.jpeg
+    gwarimpa in sktch.jpg.jpeg
+    gwarimpa.jpeg
+    in jahi.jpeg
+    jahi.jpg
+    life camp skct.jpg.jpeg
+    life camp.jpeg
+    mall jahi cxz.jpeg
+    pexels-artem-202976012-11916565.jpg
+    pexels-chetanvlad-4082527.jpg
+    pexels-franck6687-13094084.jpg
+    pexels-jenny-tran-2155428053-33898831.jpg
+    pexels-jpgata-10581671.jpg
+    pexels-mehmet-kahraman-2160664567-37458987.jpg
+    pexels-mustafa-erdem-gokce-414049516-16136141.jpg
+    pexels-omergulen-19366884.jpg
+    pexels-sajidulbari-mahmud-2152953116-32863067.jpg
+    pexels-shox-33628380.jpg
+    pexels-valentin-ivantsov-2154772556-38274451.jpg
+    pexels-whyte-light-5308541-6242119.jpg
+    phooto-construction-4754312.jpg
+    shopping mall jahi.jpeg
+    WhatsApp Image 2026-06-14 at 9.21.58 AM.jpeg
+    WhatsApp Image 2026-06-14 at 9.22.17 AM (1).jpeg
+    WhatsApp Image 2026-06-14 at 9.22.17 AM (2).jpeg
+    WhatsApp Image 2026-06-14 at 9.22.17 AM.jpeg
+    WhatsApp Image 2026-06-14 at 9.22.18 AM (1).jpeg
+    WhatsApp Image 2026-06-14 at 9.22.18 AM.jpeg
+    WhatsApp Image 2026-06-14 at 9.22.19 AM.jpeg
+    WhatsApp Image 2026-06-14 at 9.22.44 AM.jpeg
+    WhatsApp Image 2026-06-14 at 9.22.46 AM.jpeg
+    WhatsApp Image 2026-06-14 at 9.22.47 AM.jpeg
+    WhatsApp Image 2026-06-14 at 9.22.48 AM.jpeg
+  js/
+    main.js
+index.html
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="assets/js/main.js">
+(function(){
+  "use strict";
+
+  // AOS
+  AOS.init({duration:600,easing:'ease-in-out',once:true,mirror:false});
+
+// Preloader
+(function(){
+  var start = Date.now(), MIN = 1600; // minimum time (ms) so the animation can play
+  window.addEventListener('load', function(){
+    var p = document.getElementById('preloader');
+    if(!p) return;
+    setTimeout(function(){
+      p.classList.add('hide');
+      setTimeout(function(){ p.style.display = 'none'; }, 650);
+    }, Math.max(0, MIN - (Date.now() - start)));
+  });
+})();
+
+  // Header scroll class
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 80){ header.classList.add('scrolled'); }
+    else { header.classList.remove('scrolled'); }
+  });
+
+  // Scroll top button
+  var scrollTop = document.getElementById('scroll-top');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){ scrollTop.classList.add('active'); }
+    else { scrollTop.classList.remove('active'); }
+  });
+
+  // Mobile nav toggle
+  var toggle = document.querySelector('.mobile-nav-toggle');
+  var navmenu = document.querySelector('.navmenu');
+  if(toggle){
+    toggle.addEventListener('click', function(){
+      document.body.classList.toggle('mobile-nav-active');
+      toggle.classList.toggle('bi-list');
+      toggle.classList.toggle('bi-x');
+    });
+  }
+
+  // Close mobile nav on link click
+  document.querySelectorAll('.navmenu a').forEach(function(link){
+    link.addEventListener('click', function(){
+      if(document.body.classList.contains('mobile-nav-active')){
+        document.body.classList.remove('mobile-nav-active');
+        if(toggle){ toggle.classList.add('bi-list'); toggle.classList.remove('bi-x'); }
+      }
+    });
+  });
+
+  // Active nav link on scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.navmenu a');
+  window.addEventListener('scroll', function(){
+    var pos = window.scrollY + 120;
+    sections.forEach(function(sec){
+      var top = sec.offsetTop;
+      var bottom = top + sec.offsetHeight;
+      var id = sec.getAttribute('id');
+      if(pos >= top && pos < bottom){
+        navLinks.forEach(function(l){ l.classList.remove('active'); });
+        var active = document.querySelector('.navmenu a[href="#'+id+'"]');
+        if(active) active.classList.add('active');
+      }
+    });
+  });
+
+  // Hero carousel manual cycle
+  var items = document.querySelectorAll('#hero-carousel .carousel-item');
+  var current = 0;
+  if(items.length > 1){
+    setInterval(function(){
+      items[current].classList.remove('active');
+      items[current].style.opacity = 0;
+      current = (current + 1) % items.length;
+      items[current].classList.add('active');
+      items[current].style.opacity = 1;
+    }, 5000);
+  }
+
+})();
+</file>
+
+<file path="assets/css/main.css">
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+  --background-color: #ffffff;
+  --default-color: #444444;
+  --heading-color: #000000;
+  --accent-color: #E57A2A;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --nav-color: #444444;
+  --nav-hover-color: #000000;
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #444444;
+  --nav-dropdown-hover-color: #E57A2A;
+}
+
+* {
+  box-sizing: border-box
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px
+}
+
+body {
+  color: var(--default-color);
+  background: var(--background-color);
+  font-family: var(--default-font);
+  margin: 0
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  margin-top: 0
+}
+
+img {
+  max-width: 100%;
+  height: auto
+}
+
+section,
+.section {
+  color: var(--default-color);
+  background: var(--background-color);
+  padding: 60px 0;
+  overflow: clip
+}
+
+.light-background {
+  --background-color: #f9f9f9;
+  --surface-color: #ffffff;
+  background: #f9f9f9
+}
+
+.dark-background {
+  background: #060606;
+  color: #fff;
+  --heading-color: #fff;
+  --default-color: #fff;
+  --surface-color: #252525;
+  --contrast-color: #fff
+}
+
+/* Header */
+.header {
+  color: var(--default-color);
+  background: var(--background-color);
+  padding: 15px 0;
+  transition: all .5s;
+  z-index: 997;
+  box-shadow: 0 0 18px rgba(0, 0, 0, .1)
+}
+
+.header.scrolled {
+  background: #fff
+}
+
+.header .logo {
+  line-height: 1
+}
+
+.header .logo h1 {
+  font-size: 26px;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: .5px;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  text-transform: uppercase
+}
+
+.header .logo h1 span {
+  color: var(--accent-color)
+}
+
+.header .logo .logo-text {
+  line-height: 1.2
+}
+
+.header .logo .logo-tagline {
+  margin: 2px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .3px;
+  color: var(--default-color);
+  opacity: .75
+}
+
+.header .logo .logo-img {
+  height: 65px;
+  width: auto;
+  margin-right: 10px;
+  display: block
+}
+
+@media (max-width:575px) {
+  .header .logo .logo-img {
+    height: 50px;
+    margin-right: 8px
+  }
+
+  .header .logo h1 {
+    font-size: 20px
+  }
+
+  .header .logo .logo-tagline {
+  font-size: 10px
+}
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin-right: auto;
+  margin-left: auto
+}
+
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1200px
+}
+
+/* Nav */
+.navmenu ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 4px
+}
+
+.navmenu li {
+  position: relative
+}
+
+.navmenu a {
+  color: var(--nav-color);
+  font-size: 15px;
+  padding: 8px 12px;
+  font-family: var(--nav-font);
+  font-weight: 600;
+  position: relative;
+  transition: .3s;
+  display: inline-block
+}
+
+.navmenu a:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 2px;
+  left: 12px;
+  background: var(--accent-color);
+  transition: all .3s ease-in-out
+}
+
+.navmenu a:hover:before,
+.navmenu .active:before {
+  width: calc(100% - 24px)
+}
+
+.navmenu a:hover,
+.navmenu .active {
+  color: var(--nav-hover-color)
+}
+
+.mobile-nav-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--nav-color)
+}
+
+@media(max-width:991px) {
+  .navmenu ul {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    right: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    background: #fff;
+    padding: 10px 0;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    max-height: 80vh;
+    overflow-y: auto
+  }
+
+  .navmenu a {
+    padding: 12px 20px
+  }
+
+  .navmenu a:before {
+    display: none
+  }
+
+  .mobile-nav-toggle {
+    display: block
+  }
+
+  .mobile-nav-active .navmenu ul {
+    display: flex
+  }
+
+  .mobile-nav-active {
+    overflow: hidden
+  }
+}
+
+/* Hero */
+.hero {
+  padding: 0;
+  position: relative
+}
+
+.hero .carousel {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #111
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1
+}
+
+.hero .carousel-item {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transition: opacity .8s
+}
+
+.hero .carousel-item:before {
+  content: "";
+  background: rgba(0, 0, 0, .45);
+  position: absolute;
+  inset: 0;
+  z-index: 2
+}
+
+.hero .carousel-container {
+  position: absolute;
+  inset: 90px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3;
+  text-align: center;
+  color: #fff
+}
+
+.hero p {
+  color: #fff;
+  font-family: var(--heading-font);
+  letter-spacing: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px
+}
+
+.hero h2 {
+  margin-bottom: 30px;
+  font-size: 56px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.05
+}
+
+.hero .btn-get-started {
+  color: #fff;
+  font-family: var(--heading-font);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 50px;
+  transition: .5s;
+  margin: 8px;
+  border: 2px solid var(--accent-color);
+  background: transparent
+}
+
+.hero .btn-get-started:hover {
+  background: var(--accent-color);
+  color: #fff
+}
+
+@media(max-width:768px) {
+  .hero h2 {
+    font-size: 34px
+  }
+
+  .hero .carousel-container {
+    inset: 90px 30px
+  }
+
+  .hero p {
+    font-size: 12px
+  }
+}
+
+/* Section title */
+.section-title {
+  text-align: center;
+  padding-bottom: 50px
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px
+}
+
+.section-title p {
+  margin-bottom: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%)
+}
+
+
+/* ==========================================================
+   About · Business areas · Mission & Vision · Principles
+   ========================================================== */
+:root {
+  --brand-navy: #293076;
+  --brand-peach: #f8d5b5;
+  --rule: #cfcfcf;
+}
+
+section.about,
+section.direction,
+section.principles {
+  padding: clamp(48px, 6vw, 72px) 0
+}
+
+/* Shared editorial pieces */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  font-family: var(--heading-font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--brand-navy)
+}
+
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 32px;
+  height: 3px;
+  background: var(--accent-color)
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.12
+}
+
+.section-lede {
+  margin: 20px 0 0;
+  max-width: 56ch;
+  font-size: 1.0625rem;
+  line-height: 1.7
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 104px);
+  align-items: start
+}
+
+.about-intro h2 {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -.01em
+}
+
+.about-standfirst {
+  margin: 32px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: #666
+}
+
+.about-story p {
+  margin: 0 0 1.5em;
+  max-width: 64ch;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--default-color)
+}
+
+.about-story p:last-child {
+  margin-bottom: 0
+}
+
+/* .about-story .about-lead {
+  margin-bottom: 1.75rem;
+  font-family: var(--heading-font);
+  font-size: clamp(1.25rem, 1.05rem + .8vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: #111
+} */
+
+.about-images {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: clamp(320px, 42vw, 520px);
+  margin-top: clamp(56px, 8vw, 96px)
+}
+
+.about-images img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: 4px
+}
+
+.about-images .about-img-main {
+  grid-row: 1 / span 2
+}
+
+/* Mission & Vision */
+section.direction {
+  background: var(--brand-navy);
+  color: #fff;
+  --heading-color: #fff;
+  --default-color: #fff
+}
+
+.direction .eyebrow {
+  color: var(--brand-peach)
+}
+
+.direction .section-head h2 {
+  color: #fff;
+  font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
+  letter-spacing: .02em;
+  text-transform: uppercase
+}
+
+.direction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(24px, 3vw, 40px);
+  border-top: 1px solid rgba(255, 255, 255, .28)
+}
+
+.direction-item {
+  padding-top: clamp(24px, 3vw, 40px)
+}
+
+.direction-item:first-child {
+  padding-right: clamp(32px, 5vw, 80px);
+  border-right: 1px solid rgba(255, 255, 255, .28)
+}
+
+.direction-item:last-child {
+  padding-left: clamp(32px, 5vw, 80px)
+}
+
+.direction-num {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--heading-font);
+  font-size: clamp(5rem, 9vw, 9rem);
+  font-weight: 800;
+  line-height: .85;
+  letter-spacing: -.03em;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+  color: rgba(255, 255, 255, .14)
+}
+
+.direction-item h3 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 24px;
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #fff
+}
+
+.direction-item h3::before {
+  content: "";
+  flex: none;
+  width: 32px;
+  height: 3px;
+  background: var(--accent-color)
+}
+
+.direction-item p {
+  margin: 0;
+  max-width: 30em;
+  font-family: var(--heading-font);
+  font-size: clamp(1rem, .95rem + .25vw, 1.1875rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: #fff
+}
+
+/* Principles */
+.principles-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 104px);
+  align-items: start
+}
+
+.principles .section-head h2 {
+  letter-spacing: .02em;
+  text-transform: uppercase
+}
+
+.principles-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule)
+}
+
+.principles-list li {
+  position: relative;
+  padding: 20px 0 20px 32px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--heading-font);
+  font-size: clamp(1rem, .94rem + .25vw, 1.125rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #111
+}
+
+.principles-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(20px + .7em - 1.5px);
+  width: 16px;
+  height: 3px;
+  background: var(--accent-color)
+}
+
+@media (min-width: 992px) {
+  .about-intro {
+    position: sticky;
+    top: 120px
+  }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+
+  .about-grid,
+  .principles-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px
+  }
+}
+
+@media (max-width: 899px) {
+  .direction-grid {
+    grid-template-columns: minmax(0, 1fr)
+  }
+
+  .direction-item:first-child {
+    padding-right: 0;
+    padding-bottom: 48px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .28)
+  }
+
+  .direction-item:last-child {
+    padding-left: 0
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .about-images {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    height: auto;
+    gap: 12px
+  }
+
+  .about-images img {
+    height: auto;
+    aspect-ratio: 1 / 1
+  }
+
+  .about-images .about-img-main {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10
+  }
+
+  .principles-list li {
+    padding-left: 28px
+  }
+}
+
+.read-more {
+  background: var(--accent-color);
+  color: #fff !important;
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  transition: .3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer
+}
+
+.read-more i {
+  font-size: 18px;
+  margin-left: 6px
+}
+
+.read-more:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  padding-right: 30px
+}
+
+/* Services */
+.services .service-item {
+  background: var(--surface-color);
+  box-shadow: 0 5px 60px 0 rgba(0, 0, 0, .08);
+  padding: 50px 30px;
+  transition: all .3s;
+  border-radius: 18px;
+  border-bottom: 5px solid var(--surface-color);
+  height: 100%
+}
+
+.services .service-item .icon {
+  color: #fff;
+  background: var(--accent-color);
+  width: 64px;
+  height: 64px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  transition: .3s
+}
+
+.services .service-item h3 {
+  font-weight: 700;
+  margin: 10px 0 15px;
+  font-size: 22px;
+  transition: .3s
+}
+
+.services .service-item p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0
+}
+
+@media(min-width:1365px) {
+  .services .service-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color)
+  }
+
+  .services .service-item:hover h3 {
+    color: var(--accent-color)
+  }
+}
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: ""
+}
+
+/* Real Estate cards */
+.real-estate .card {
+  background: #111;
+  color: #fff;
+  border: none;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 460px;
+  transition: .4s
+}
+
+.real-estate .card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .65) 100%);
+  z-index: 2
+}
+
+.real-estate .card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: .6s
+}
+
+.real-estate .card:hover img {
+  transform: scale(1.06)
+}
+
+.real-estate .card .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 30px;
+  background: transparent
+}
+
+.real-estate .card .card-body .sale-rent {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  padding: 4px 18px;
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase
+}
+
+.real-estate .card .card-body h3 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 0;
+  padding-left: 10px;
+  border-left: 3px solid var(--accent-color);
+  color: #fff
+}
+
+.real-estate .card .card-body h3 a {
+  color: #fff
+}
+
+.real-estate .card .card-body p {
+  color: rgba(255, 255, 255, .85);
+  font-size: 14px;
+  margin: 10px 0 0;
+  line-height: 1.5
+}
+
+/* Features */
+.features .features-image {
+  position: relative;
+  min-height: 400px
+}
+
+.features .features-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  border-radius: 8px
+}
+
+.features h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative
+}
+
+.features h3:after {
+  content: "";
+  background: var(--accent-color);
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  left: 0;
+  bottom: 0
+}
+
+.features .icon-box {
+  margin-top: 30px
+}
+
+.features .icon-box i {
+  color: var(--accent-color);
+  background: var(--surface-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25px;
+  font-size: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 30px rgba(0, 0, 0, .1);
+  transition: .3s
+}
+
+.features .icon-box:hover i {
+  background: var(--accent-color);
+  color: #fff
+}
+
+.features .icon-box h4 {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 18px
+}
+
+.features .icon-box h4 a {
+  color: var(--heading-color)
+}
+
+.features .icon-box h4 a:hover {
+  color: var(--accent-color)
+}
+
+.features .icon-box p {
+  line-height: 22px;
+  font-size: 14px;
+  margin-bottom: 0
+}
+
+/* Contact */
+.contact .info-item+.info-item {
+  margin-top: 30px
+}
+
+.contact .info-item i {
+  color: #fff;
+  background: var(--accent-color);
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin-right: 15px;
+  flex-shrink: 0
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 5px
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px
+}
+
+.contact form input,
+.contact form textarea {
+  font-size: 14px;
+  padding: 12px 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin-bottom: 12px;
+  background: #fff
+}
+
+.contact form input:focus,
+.contact form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color)
+}
+
+.contact form button {
+  color: #fff;
+  background: var(--accent-color);
+  border: 0;
+  padding: 12px 34px;
+  transition: .4s;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: .5px
+}
+
+.contact form button:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%)
+}
+
+/* Page title inner */
+.page-title .heading {
+  padding: 150px 0 70px;
+  border-top: 1px solid #eee
+}
+
+.page-title .heading h1 {
+  font-size: 38px;
+  font-weight: 700
+}
+
+.page-title nav {
+  background: #f4f4f4;
+  padding: 18px 0
+}
+
+.page-title nav ol {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  flex-wrap: wrap
+}
+
+.page-title nav ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding: 0 10px;
+  color: #aaa
+}
+
+.page-title nav ol li.current {
+  color: var(--accent-color)
+}
+
+/* Footer */
+.footer {
+  color: var(--default-color);
+  background: #f9f9f9;
+  font-size: 14px;
+  padding: 50px 0 0
+}
+
+.footer .icon {
+  color: var(--accent-color);
+  margin-right: 15px;
+  font-size: 24px;
+  line-height: 0
+}
+
+.footer h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px
+}
+
+.footer .address p {
+  margin-bottom: 0
+}
+
+.footer .copyright {
+  padding: 25px 0;
+  border-top: 1px solid #e6e6e6;
+  margin-top: 30px
+}
+
+.footer .copyright p {
+  margin-bottom: 0
+}
+
+/* Scroll top */
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all .4s;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: #fff;
+  line-height: 0
+}
+
+.scroll-top:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: #fff
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1
+}
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .6s ease-out, visibility .6s
+}
+
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden
+}
+
+.preloader-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px
+}
+
+.preloader-logo svg {
+  width: 90px;
+  height: auto;
+  overflow: visible;
+  animation: pl-breathe 2s ease-in-out 1.4s infinite
+}
+
+.preloader-logo polygon {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: pl-rise .7s cubic-bezier(.2, .8, .2, 1) forwards
+}
+
+.preloader-logo .pl-navy {
+  fill: #293076;
+  animation-delay: 0s
+}
+
+.preloader-logo .pl-orange {
+  fill: #e57a2a;
+  animation-delay: .25s
+}
+
+.preloader-logo .pl-peach {
+  fill: #f8d5b5;
+  animation-delay: .5s
+}
+
+.pl-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #000000;
+  opacity: 0;
+  animation: pl-fade .6s ease-out .9s forwards
+}
+
+.pl-name span {
+  color: #000000
+}
+
+@keyframes pl-rise {
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+@keyframes pl-fade {
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes pl-breathe {
+
+  0%,
+  100% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(1.06)
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+  .preloader-logo svg,
+  .preloader-logo polygon,
+  .pl-name {
+    animation: none;
+    opacity: 1;
+    transform: none
+  }
+}
+
+/* Utilities */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -.75rem;
+  margin-left: -.75rem
+}
+
+.row>[class*="col-"] {
+  padding-right: .75rem;
+  padding-left: .75rem
+}
+
+.gy-4 {
+  row-gap: 1.5rem
+}
+
+.gy-5 {
+  row-gap: 3rem
+}
+
+.gy-3 {
+  row-gap: 1rem
+}
+
+.d-flex {
+  display: flex
+}
+
+.align-items-center {
+  align-items: center
+}
+
+.justify-content-between {
+  justify-content: space-between
+}
+
+.justify-content-center {
+  justify-content: center
+}
+
+.justify-content-around {
+  justify-content: space-around
+}
+
+.flex-column {
+  flex-direction: column
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0
+}
+
+.text-center {
+  text-align: center
+}
+
+.mb-0 {
+  margin-bottom: 0
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem
+}
+
+.mt-2 {
+  margin-top: .5rem
+}
+
+.mt-3 {
+  margin-top: 1rem
+}
+
+.mt-4 {
+  margin-top: 1.5rem
+}
+
+.mt-5 {
+  margin-top: 3rem
+}
+
+.position-relative {
+  position: relative
+}
+
+.w-100 {
+  width: 100%
+}
+
+.h-100 {
+  height: 100%
+}
+
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-8,
+.col-md-6,
+.col-xl-4 {
+  position: relative;
+  width: 100%
+}
+
+@media(min-width:576px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+}
+
+@media(min-width:992px) {
+  .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%
+  }
+
+  .col-lg-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%
+  }
+
+  .col-lg-5 {
+    flex: 0 0 41.6666%;
+    max-width: 41.6666%
+  }
+
+  .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+
+  .col-lg-8 {
+    flex: 0 0 66.6666%;
+    max-width: 66.6666%
+  }
+}
+
+@media(min-width:1200px) {
+  .col-xl-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%
+  }
+}
+
+/* Team */
+.team .team-member {
+  background: var(--surface-color);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 60px 0 rgba(0, 0, 0, .08);
+  height: 100%;
+  transition: transform .3s
+}
+
+.team .team-member .member-img {
+  position: relative;
+  overflow: hidden;
+  background: #e9e9ef
+}
+
+.team .team-member .member-img img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform .5s
+}
+
+.team .team-member .social {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -50px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .55));
+  opacity: 0;
+  transition: all .3s
+}
+
+.team .team-member .social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: .3s
+}
+
+.team .team-member .social a:hover {
+  background: var(--heading-color);
+  color: #fff
+}
+
+.team .team-member .member-info {
+  text-align: center;
+  padding: 22px 15px 26px;
+  border-bottom: 5px solid var(--surface-color);
+  transition: border-color .3s
+}
+
+.team .team-member .member-info h4 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 4px
+}
+
+.team .team-member .member-info span {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%)
+}
+
+.team .team-member:hover {
+  transform: translateY(-8px)
+}
+
+.team .team-member:hover .member-img img {
+  transform: scale(1.05)
+}
+
+.team .team-member:hover .social {
+  bottom: 0;
+  opacity: 1
+}
+
+.team .team-member:hover .member-info {
+  border-color: var(--accent-color)
+}
+
+@media(hover:none) {
+  .team .team-member .social {
+    bottom: 0;
+    opacity: 1
+  }
+}
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAXBUILD LIMITED — Real Estate | Investment | Construction</title>
+  <meta name="description"
+    content="MAXBUILD LIMITED is a progressive real estate, investment and construction firm providing advanced services for private and public sectors.">
+  <meta name="keywords"
+    content="Max Build Limited, real estate Abuja, construction Nigeria, investment, property development">
+
+  <link href="assets/img/logo/MAX BUILD logo updated.png" rel="icon">
+  <link href="assets/img/logo/MAX BUILD logo updated.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-logo">
+      <svg viewBox="851 112 659 748" role="img" aria-label="Max Build Limited">
+        <polygon class="pl-navy" points="851,207 1510,860 1098,860 1098,568 1017,492 1017,860 851,860" />
+        <polygon class="pl-orange" points="1098,317 1334,542 1334,860 1098,860" />
+        <polygon class="pl-peach" points="1238,112 1387,255 1387,636 1236,455" />
+      </svg>
+      <div class="pl-name">MAXBUILD <span>LIMITED</span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top" style="position:fixed;top:0;left:0;right:0">
+    <div class="container-fluid d-flex align-items-center justify-content-between"
+      style="max-width:1200px;margin:0 auto">
+      <a href="#home" class="logo d-flex align-items-center">
+        <img src="assets/img/logo/MAX BUILD logo updated.png" alt="Max Build Limited logo" class="logo-img">
+        <div class="logo-text">
+          <h1>MAXBUILD LIMITED<span></span></h1>
+          <p class="logo-tagline">Real Estate | Investment | Construction</p>
+        </div>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#real-estate">Real Estate</a></li>
+          <li><a href="#construction">Construction</a></li>
+          <li><a href="#investment">Investment</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main" style="padding-top:0">
+
+    <!-- HERO -->
+    <section id="home" class="hero section dark-background" style="padding:0">
+      <div id="hero-carousel" class="carousel">
+        <div class="carousel-item active">
+          <img src="assets/img/pexels-chetanvlad-4082527.jpg" alt="">
+          <div class="carousel-container">
+            <div>
+              <p>MAXBUILD LIMITED</p>
+              <h2>Building Value. Creating Possibilities.</h2>
+              <a href="#construction" class="btn-get-started">Explore Our Services</a>
+              <a href="#investment" class="btn-get-started">Investment Opportunities</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="opacity:0">
+          <img src="assets/img/pexels-franck6687-13094084.jpg" alt="">
+          <div class="carousel-container">
+            <div>
+              <p>REAL ESTATE | INVESTMENT | CONSTRUCTION</p>
+              <h2>Lasting Value Through Tangible Assets</h2>
+              <a href="#real-estate" class="btn-get-started">View Real Estate</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="opacity:0">
+          <img src="assets/img/pexels-jpgata-10581671.jpg" alt="">
+          <div class="carousel-container">
+            <div>
+              <p>JAHI EXTENSION</p>
+              <h2>Own a 4-Bedroom Apartment</h2>
+              <a href="#real-estate" class="btn-get-started">View Properties</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="about-grid">
+          <header class="about-intro">
+            <p class="eyebrow">About MaxBuild</p>
+            <h2>Building a foundation for lasting value.</h2>
+            <p class="about-standfirst">MAXBUILD LIMITED is a progressive real estate, investment and construction firm
+              providing advanced services for both the private and public sectors.</p>
+          </header>
+
+          <div class="about-story">
+            <p class="about-lead">MaxBuild was founded with a clear vision: to make quality real estate more accessible
+              while contributing meaningfully to the development of the housing sector.</p>
+            <p>What began as a focused team with a passion for real estate has grown into a trusted property development
+              company with an expanding portfolio of estates. From the outset, MaxBuild has remained committed to
+              delivering quality housing solutions while responding to the growing demand for affordable and accessible
+              homeownership.</p>
+            <p>As the company grew, so did its vision. MaxBuild expanded its estate portfolio and strengthened its
+              operations to serve a wider range of customers and investment needs.</p>
+            <p>In 2024, MaxBuild introduced flexible payment plans, creating a more convenient pathway to homeownership
+              and allowing more prospective homeowners to secure properties without the pressure of making a full upfront
+              payment.</p>
+            <p>The company also expanded its reach through the establishment of new branches and strengthened its
+              development capabilities through a strategic partnership with a reputable construction firm.</p>
+            <p>Today, MaxBuild continues to build on this foundation, combining real estate development,
+              customer-focused solutions and strategic partnerships to create properties that offer both quality living
+              and long-term value.</p>
+          </div>
+        </div>
+
+        <div class="about-images">
+          <img class="about-img-main" src="assets/img/pexels-shox-33628380.jpg" alt="" loading="lazy">
+          <img src="assets/img/pexels-chetanvlad-4082527.jpg" alt="" loading="lazy">
+          <img src="assets/img/pexels-sajidulbari-mahmud-2152953116-32863067.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- THREE CORE BUSINESS AREAS -->
+    <section id="services" class="services section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Core Business Areas</h2>
+        <p>Real estate, investment and construction — delivered with technical rigour and long-term value in mind.</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-buildings"></i></div>
+              <h3>01 — Real Estate</h3>
+              <p>Residential and mixed-use development, including detached duplexes, semi-detached terraces and
+                apartment communities across JAHI Extension, Guzape, Life-Camp, Gwarimpa and Durumi.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-graph-up-arrow"></i></div>
+              <h3>02 — Investment</h3>
+              <p>Real estate investment, property opportunities, development opportunities and strategic partnerships
+                focused on tangible assets and long-term value.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-hammer"></i></div>
+              <h3>03 — Construction</h3>
+              <p>Low energy sustained design, indigenous technique, project management, production information and
+                specialist consultancy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION & VISION -->
+    <section id="direction" class="direction section">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Our Direction</p>
+          <h2>Mission &amp; Vision</h2>
+        </header>
+
+        <div class="direction-grid">
+          <div class="direction-item">
+            <span class="direction-num" aria-hidden="true">01</span>
+            <h3>Mission</h3>
+            <p>Consolidating all relevant skills and techniques with special attention into every project with a view to produce efficient and highly satisfied customer's with positive reviews.</p>
+          </div>
+          <div class="direction-item">
+            <span class="direction-num" aria-hidden="true">02</span>
+            <h3>Vision</h3>
+            <p>To be the biggest and most influential company, harnessing indigenous techniques to produce worldwide acceptable and sustainable services in harmony with the built environment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section id="principles" class="principles section light-background">
+      <div class="container">
+        <div class="principles-grid">
+          <header class="section-head">
+            <p class="eyebrow">How we operate</p>
+            <h2>Our Principles</h2>
+          </header>
+          <ul class="principles-list">
+            <li>Satisfying clients’ needs with respect to standards</li>
+            <li>Use of specialist consultants as and when required</li>
+            <li>On-going CPD training</li>
+            <li>Researching and developing best practices</li>
+            <li>Effective &amp; efficient turnaround of information</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL ESTATE -->
+    <section id="real-estate" class="real-estate section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Real Estate</h2>
+        <p>Residential and mixed-use development across our project locations.</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+              <img src="assets/img/jahi.jpg" alt="">
+              <div class="card-body">
+                <span class="sale-rent">Residential</span>
+                <h3>JAHI Extension</h3>
+                <p>Own a 4-bedroom apartment in a master-planned community.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card">
+              <img src="assets/img/WhatsApp Image 2026-06-14 at 9.22.19 AM.jpeg " alt="">
+              <div class="card-body">
+                <span class="sale-rent">Duplex</span>
+                <h3>Guzape</h3>
+                <p>4-bedroom duplex units delivered in Guzape, Abuja.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="card">
+              <img src="assets/img/life camp.jpeg" alt="">
+              <div class="card-body">
+                <span class="sale-rent">Estate</span>
+                <h3>Life-Camp</h3>
+                <p>4-bedroom duplex units delivered in Life-Camp, Abuja.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="card">
+              <img src="assets/img/gwarimpa.jpeg" alt="">
+              <div class="card-body">
+                <span class="sale-rent">Residential</span>
+                <h3>Gwarimpa</h3>
+                <p>A lifestyle of convenience and connectivity.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="card">
+              <img src="assets/img/WhatsApp Image 2026-06-14 at 9.22.48 AM.jpeg" alt="">
+              <div class="card-body">
+                <span class="sale-rent">Estate</span>
+                <h3>Durumi</h3>
+                <p>10-unit semi-detached duplex housing estate.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="card">
+              <img src="assets/img/WhatsApp Image 2026-06-14 at 9.22.44 AM.jpeg" alt="">
+              <div class="card-body">
+                <span class="sale-rent">Development</span>
+                <h3>Abuja</h3>
+                <p>Over 200 luxury housing units developed and delivered.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSTRUCTION -->
+    <section id="construction" class="services section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Construction</h2>
+        <p>Low energy sustained design, indigenous technique, project management and specialist consultancy.</p>
+      </div>
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-lightbulb"></i></div>
+              <h3>Low Energy Sustained Design</h3>
+              <p>Design approaches focused on long-term sustainability and reduced energy demand.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-tree"></i></div>
+              <h3>Indigenous Technique</h3>
+              <p>Harnessing local knowledge and methods to produce context-appropriate built solutions.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-cash-stack"></i></div>
+              <h3>Cost-Effective Technical Solutions</h3>
+              <p>Imaginative technical solutions that meet client requirements while respecting budgets.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-clipboard-check"></i></div>
+              <h3>Project Management</h3>
+              <p>Managing input into each project to the highest professional standards at all stages.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
+              <h3>Production Information</h3>
+              <p>Exceptional design and production information delivery with efficient turnaround.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-people"></i></div>
+              <h3>Specialist Consultancy</h3>
+              <p>Use of specialist consultants as and when required to support project delivery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTMENT -->
+    <section id="investment" class="services section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Investment</h2>
+        <p>MAXBUILD LIMITED operates across real estate, investment and construction. Our investment approach is
+          grounded in real assets, development and long-term value.</p>
+      </div>
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-house-check"></i></div>
+              <h3>Property Investment</h3>
+              <p>Real estate investment opportunities connected to residential and mixed-use development, including
+                duplexes, terraces and apartment communities.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-diagram-3"></i></div>
+              <h3>Development Opportunities</h3>
+              <p>Development-led opportunities across the built environment, supported by Max Build’s construction and
+                project management capabilities.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-people"></i></div>
+              <h3>Strategic Partnerships</h3>
+              <p>Partnership conversations for aligned real estate, construction and development opportunities. We do
+                not promise returns or financial performance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTMENT CTA -->
+    <section id="investment-cta" class="features section light-background">
+      <div class="container">
+        <div class="row justify-content-around gy-4">
+          <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100"
+            style="position:relative;min-height:380px">
+            <img src="assets/img/pexels-whyte-light-5308541-6242119.jpg" alt=""
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px">
+          </div>
+          <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <h3>Discuss an Investment Opportunity</h3>
+            <p>If you are exploring a real estate or development-related opportunity, start a conversation with MAXBUILD
+              LIMITED.</p>
+            <a href="#contact" class="read-more mt-3">Start a Conversation <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======= Team ======= -->
+    <section id="team" class="team section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Meet Our Team</h2>
+        <p>The people behind MAXBUILD LIMITED, delivering real estate, investment and construction projects with
+          professionalism and care.</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/ceo.png" alt="Abdulmumeen Auwal Jibo">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Abdulmumeen Auwal Jibo</h4>
+                <span>Chief Executive Officer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/coo.png" alt="Bilal Tijjani Paki">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Bilal Tijjani Paki</h4>
+                <span>Chief Operating Officer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/secretary.png" alt="Mariam Bukola Abdulsalam">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Mariam Bukola Abdulsalam</h4>
+                <span>Executive Secretary
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/architect.png" alt="Abdussamad Murtala">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Abdussamad Murtala</h4>
+                <span>Architect</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/site architect.png" alt="Abubakar Sadiq Nuhu">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Abubakar Sadiq Nuhu</h4>
+                <span>Design/Site Architect</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/CLO CHIFE LOGISTIC.png" alt="Gidado Auwal Jibo">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Gidado Auwal Jibo</h4>
+                <span>Chief Logistics Officer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/BUILDER.png" alt="Abdulrahim Hassan Ahmed">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Abdulrahim Hassan Ahmed</h4>
+                <span>Builder</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/STORE KEEPER.png" alt="Umar Dauda">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Umar Dauda</h4>
+                <span>Store Keeper</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/RESIDENT ENGINEER.png" alt="Engr Abubakar Alhassan Gimba">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Engr Abubakar Alhassan Gimba</h4>
+                <span>Resident Engineer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/SECURITY.png" alt="Salasi Stephen Samaila">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> 
+              </div>
+              <div class="member-info">
+                <h4>Salasi Stephen Samaila</h4>
+                <span>Security Officer</span>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/BUILDERR.png" alt="Yusuf Abdullahi">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Yusuf Abdullahi</h4>
+                <span>Builder</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/HEAD LABORER.png" alt="Kabiru Abubakar">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> 
+              </div>
+              <div class="member-info">
+                <h4>Kabiru Abubakar</h4>
+                <span>Head Labourer</span>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/CHIEF MASON.png" alt="Hussaini Yusuf">
+                <!-- <div class="social">
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Hussaini Yusuf</h4>
+                <span>Lead Mason</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Let’s Build What Comes Next.</h2>
+        <p>Speak with MAXBUILD LIMITED about real estate, construction or investment opportunities.</p>
+      </div>
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-4">
+          <div class="col-lg-4">
+            <div class="info-item d-flex">
+              <i class="bi bi-geo-alt"></i>
+              <div>
+                <h3>Location</h3>
+                <p>Abuja, Nigeria</p>
+              </div>
+            </div>
+            <div class="info-item d-flex">
+              <i class="bi bi-telephone"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>08034359404<br>08032269713<br>08071777613</p>
+              </div>
+            </div>
+            <div class="info-item d-flex">
+              <i class="bi bi-globe"></i>
+              <div>
+                <h3>Website</h3>
+                <p>www.maxbuildltd.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <form id="contactForm"
+              onsubmit="event.preventDefault(); this.querySelector('.sent-message').style.display='block'; this.reset();">
+              <div class="row gy-4">
+                <div class="col-md-6"><input type="text" name="name" placeholder="Your Name" required></div>
+                <div class="col-md-6"><input type="email" name="email" placeholder="Your Email" required></div>
+                <div class="col-lg-12"><input type="text" name="subject" placeholder="Subject" required></div>
+                <div class="col-lg-12"><textarea name="message" rows="6" placeholder="Message" required></textarea>
+                </div>
+                <div class="col-lg-12 text-center">
+                  <div class="sent-message" style="display:none;color:#059652;font-weight:600;margin-bottom:12px">Your
+                    message has been sent. Thank you!</div>
+                  <button type="submit">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-4 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div class="address">
+            <h4>Location</h4>
+            <p>Abuja, Nigeria</p>
+            <p>Durumi · Guzape · Life-Camp · Gwarimpa</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact</h4>
+            <p><strong>Phone:</strong> 08034359404<br>
+              <strong>Phone:</strong> 08032269713<br>
+              <strong>Phone:</strong> 08071777613<br>
+              <strong>Website:</strong> www.maxbuildltd.com
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex">
+          <i class="bi bi-buildings icon"></i>
+          <div>
+            <h4>MAXBUILD LIMITED</h4>
+            <p>Real Estate | Investment | Construction</p>
+            <p>Building value. Creating possibilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright text-center">
+      <p>© <span>Copyright</span> <strong>MAXBUILD LIMITED</strong> <span>All Rights Reserved</span></p>
+    </div>
+  </footer>
+
+  <a href="#home" id="scroll-top" class="scroll-top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
+</file>
+
+</files>
