@@ -145,8 +145,8 @@ section,
   }
 
   .header .logo .logo-tagline {
-  font-size: 10px
-}
+    font-size: 10px
+  }
 }
 
 .container-fluid {
@@ -1075,9 +1075,7 @@ section.direction {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 8px 16px 8px 10px;
+  padding: 0;
   margin-bottom: 22px
 }
 
@@ -1091,7 +1089,7 @@ section.direction {
   font-weight: 800;
   font-size: 16px;
   letter-spacing: .5px;
-  color: #000
+  color: #fff
 }
 
 .footer .footer-logo:hover span {
@@ -1103,30 +1101,6 @@ section.direction {
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 26px
-}
-
-.footer .footer-social {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap
-}
-
-.footer .footer-social a {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, .7);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 19px
-}
-
-.footer .footer-social a:hover {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  color: #fff
 }
 
 .footer .footer-bottom {
@@ -1194,108 +1168,6 @@ section.direction {
 .scroll-top.active {
   visibility: visible;
   opacity: 1
-}
-
-/* Preloader */
-#preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  overflow: hidden;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity .6s ease-out, visibility .6s
-}
-
-#preloader.hide {
-  opacity: 0;
-  visibility: hidden
-}
-
-.preloader-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px
-}
-
-.preloader-logo svg {
-  width: 90px;
-  height: auto;
-  overflow: visible;
-  animation: pl-breathe 2s ease-in-out 1.4s infinite
-}
-
-.preloader-logo polygon {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: pl-rise .7s cubic-bezier(.2, .8, .2, 1) forwards
-}
-
-.preloader-logo .pl-navy {
-  fill: #293076;
-  animation-delay: 0s
-}
-
-.preloader-logo .pl-orange {
-  fill: #e57a2a;
-  animation-delay: .25s
-}
-
-.preloader-logo .pl-peach {
-  fill: #f8d5b5;
-  animation-delay: .5s
-}
-
-.pl-name {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #000000;
-  opacity: 0;
-  animation: pl-fade .6s ease-out .9s forwards
-}
-
-.pl-name span {
-  color: #000000
-}
-
-@keyframes pl-rise {
-  to {
-    opacity: 1;
-    transform: none
-  }
-}
-
-@keyframes pl-fade {
-  to {
-    opacity: 1
-  }
-}
-
-@keyframes pl-breathe {
-
-  0%,
-  100% {
-    transform: scale(1)
-  }
-
-  50% {
-    transform: scale(1.06)
-  }
-}
-
-@media (prefers-reduced-motion:reduce) {
-
-  .preloader-logo svg,
-  .preloader-logo polygon,
-  .pl-name {
-    animation: none;
-    opacity: 1;
-    transform: none
-  }
 }
 
 /* Utilities */
@@ -1468,38 +1340,6 @@ section.direction {
   transition: transform .5s
 }
 
-.team .team-member .social {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -50px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, .55));
-  opacity: 0;
-  transition: all .3s
-}
-
-.team .team-member .social a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  transition: .3s
-}
-
-.team .team-member .social a:hover {
-  background: var(--heading-color);
-  color: #fff
-}
-
 .team .team-member .member-info {
   text-align: center;
   padding: 22px 15px 26px;
@@ -1526,20 +1366,8 @@ section.direction {
   transform: scale(1.05)
 }
 
-.team .team-member:hover .social {
-  bottom: 0;
-  opacity: 1
-}
-
 .team .team-member:hover .member-info {
   border-color: var(--accent-color)
-}
-
-@media(hover:none) {
-  .team .team-member .social {
-    bottom: 0;
-    opacity: 1
-  }
 }
 
 /* Investment pathways */
@@ -1677,4 +1505,58 @@ section.direction {
   .pathway-card .pathway-meta {
     grid-template-columns: 1fr
   }
+}
+
+/* Inner pages (no hero): clear the fixed header */
+.main.inner {
+  padding-top: 96px;
+}
+
+@media (max-width: 575px) {
+  .main.inner {
+    padding-top: 80px;
+  }
+}
+
+/* Company information */
+.company-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 32px 0 0;
+}
+
+.company-facts>div {
+  background: #fff;
+  border-top: 3px solid var(--accent-color);
+  padding: 20px 22px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, .06);
+}
+
+.company-facts dt {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  opacity: .7;
+  margin-bottom: 6px;
+  font-family: var(--nav-font);
+}
+
+.company-facts dd {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--heading-color);
+}
+
+@media (max-width: 767px) {
+  .company-facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer .footer-reg {
+  font-size: 14px;
+  opacity: .85;
+  margin: 0;
 }
